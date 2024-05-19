@@ -12,14 +12,14 @@ pipeline {
         stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv(installationName: 'localSonar12',credentialsId: 'sonartoken') {
-                    sh 'mvn clean verify sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN'
+                    bat 'mvn clean verify sonar:sonar -Dsonar.login=%SONAR_AUTH_TOKEN%'
                 }    
             }
         }
 
         stage('Build Artifact'){
             steps{
-             sh ''' mvn clean package'''
+             bat ''' mvn clean package'''
             }
         }
         stage('Archieve / Cleanup Workspace'){

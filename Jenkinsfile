@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Archieve / Cleanup Workspace'){
             steps{
-                archiveArtifacts artifacts: '**/*.war', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
+                archiveArtifacts artifacts: '**/*.jar', fingerprint: true, followSymlinks: false, onlyIfSuccessful: true
                 cleanWs()
             }
         }
